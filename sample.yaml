@@ -1,0 +1,9 @@
+# This is a sample YAML file
+student:
+  name: Random User
+  id: 1234
+  hobby:
+    - cycling
+    - coding
+    - reading
+website: https://github.com/ShivamDevrani
