@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #2980b9, #6dd5fa, #fff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+        }
+        .form-container {
+            background: #fff;
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+            width: 350px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #2980b9;
+        }
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            border: 1px solid #b6b6b6;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border 0.2s;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border: 1.7px solid #2980b9;
+        }
+        button {
+            width: 100%;
+            padding: 10px 0;
+            background: linear-gradient(90deg, #2980b9, #6dd5fa);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(41,128,185,0.13);
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #2571a5, #51c0ea);
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        @media (max-width: 400px) {
+            .form-container {
+                padding: 18px 7px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Student Registration</h2>
+    <div class="success-message" id="successMsg">Thank you for registering!</div>
+    <form id="studentForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" min="10" max="99" required>
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="course">Course</label>
+        <select id="course" name="course" required>
+            <option value="">Select</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Physics">Physics</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+</div>
+<script>
+    document.getElementById('studentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Simple validation
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var age = document.getElementById('age').value;
+        var gender = document.getElementById('gender').value;
+        var course = document.getElementById('course').value;
+        if (!name || !email || !age || !gender || !course) {
+            alert("Please fill in all fields.");
+            return;
+        }
+        // Show message
+        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('studentForm').reset();
+        setTimeout(function() {
+            document.getElementById('successMsg').style.display = 'none';
+        }, 2000);
+    });
+</script>
+</body>
+</html>
